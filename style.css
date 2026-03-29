@@ -487,3 +487,15 @@ lotto-ball {
         padding: 22px;
     }
 }
+
+
+.stack-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.single-column {
+    grid-template-columns: 1fr;
+}
