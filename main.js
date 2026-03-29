@@ -32,15 +32,15 @@ class LottoBall extends HTMLElement {
         const ballColor = this.getBallColor(number);
         style.textContent = `
             .ball {
-                width: var(--ball-size, 50px);
-                height: var(--ball-size, 50px);
+                width: var(--ball-size, 54px);
+                height: var(--ball-size, 54px);
                 border-radius: 50%;
                 background-color: ${ballColor};
                 color: white;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 1.2rem;
+                font-size: 1.15rem;
                 font-weight: bold;
                 box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.15);
             }
@@ -73,8 +73,11 @@ const formStatus = document.getElementById('form-status');
 function applyTheme(theme) {
     const isDark = theme === 'dark';
     body.classList.toggle('dark-mode', isDark);
-    themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-    themeToggle.setAttribute('aria-pressed', String(isDark));
+
+    if (themeToggle) {
+        themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+    }
 }
 
 function initializeTheme() {
@@ -84,6 +87,10 @@ function initializeTheme() {
 }
 
 function generateNumbers() {
+    if (!lottoNumbersContainer) {
+        return;
+    }
+
     lottoNumbersContainer.innerHTML = '';
 
     const numbers = new Set();
@@ -99,6 +106,10 @@ function generateNumbers() {
 }
 
 function setFormStatus(message, type = '') {
+    if (!formStatus) {
+        return;
+    }
+
     formStatus.textContent = message;
     formStatus.className = 'form-status';
 
@@ -107,42 +118,48 @@ function setFormStatus(message, type = '') {
     }
 }
 
-themeToggle.addEventListener('click', () => {
-    const nextTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-    localStorage.setItem(THEME_KEY, nextTheme);
-    applyTheme(nextTheme);
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const nextTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+        localStorage.setItem(THEME_KEY, nextTheme);
+        applyTheme(nextTheme);
+    });
+}
 
-generateButton.addEventListener('click', generateNumbers);
+if (generateButton) {
+    generateButton.addEventListener('click', generateNumbers);
+}
 
-partnershipForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+if (partnershipForm && partnershipSubmit) {
+    partnershipForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    partnershipSubmit.disabled = true;
-    partnershipSubmit.textContent = '전송 중...';
-    setFormStatus('');
+        partnershipSubmit.disabled = true;
+        partnershipSubmit.textContent = '전송 중...';
+        setFormStatus('');
 
-    try {
-        const response = await fetch(partnershipForm.action, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-            },
-            body: new FormData(partnershipForm),
-        });
+        try {
+            const response = await fetch(partnershipForm.action, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                },
+                body: new FormData(partnershipForm),
+            });
 
-        if (!response.ok) {
-            throw new Error('Request failed');
+            if (!response.ok) {
+                throw new Error('Request failed');
+            }
+
+            partnershipForm.reset();
+            setFormStatus('문의가 정상적으로 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
+        } catch (error) {
+            setFormStatus('문의 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'error');
+        } finally {
+            partnershipSubmit.disabled = false;
+            partnershipSubmit.textContent = '문의 보내기';
         }
-
-        partnershipForm.reset();
-        setFormStatus('문의가 정상적으로 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
-    } catch (error) {
-        setFormStatus('문의 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'error');
-    } finally {
-        partnershipSubmit.disabled = false;
-        partnershipSubmit.textContent = '문의 보내기';
-    }
-});
+    });
+}
 
 initializeTheme();

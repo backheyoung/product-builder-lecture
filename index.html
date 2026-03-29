@@ -1,51 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="로또 번호 생성기와 함께 확률, 조합 전략, 구매 전 체크리스트를 한곳에서 정리한 정보형 사이트입니다.">
     <meta name="google-adsense-account" content="ca-pub-7205793421638418">
-    <title>Lotto Number Generator</title>
+    <title>로또 인사이트 랩 | 번호 생성기와 구매 가이드</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7205793421638418" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="toolbar">
-            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">Dark Mode</button>
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">L</span>
+                <span>
+                    <strong>로또 인사이트 랩</strong>
+                    <small>번호 생성기와 구매 판단 가이드</small>
+                </span>
+            </a>
+            <nav class="site-nav" aria-label="주요 메뉴">
+                <a href="#generator">번호 생성기</a>
+                <a href="#guide">구매 가이드</a>
+                <a href="#faq">FAQ</a>
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="색상 테마 전환">Dark Mode</button>
         </div>
-        <h1>Lotto Number Generator</h1>
-        <button id="generate-btn" type="button">Generate Numbers</button>
-        <div id="lotto-numbers" class="lotto-numbers"></div>
-        <section class="partnership-section" aria-labelledby="partnership-title">
-            <h2 id="partnership-title">제휴 문의</h2>
-            <p class="section-description">브랜드 협업이나 광고 제안을 남겨주시면 확인 후 연락드리겠습니다.</p>
-            <form
-                id="partnership-form"
-                class="partnership-form"
-                action="https://formspree.io/f/mkopjoey"
-                method="POST"
-            >
-                <label class="form-field">
-                    <span>Name</span>
-                    <input type="text" name="name" required>
-                </label>
-                <label class="form-field">
-                    <span>Email</span>
-                    <input type="email" name="email" required>
-                </label>
-                <label class="form-field">
-                    <span>Company</span>
-                    <input type="text" name="company">
-                </label>
-                <label class="form-field">
-                    <span>Message</span>
-                    <textarea name="message" rows="5" required></textarea>
-                </label>
-                <button id="partnership-submit" class="submit-button" type="submit">문의 보내기</button>
-                <p id="form-status" class="form-status" aria-live="polite"></p>
-            </form>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="shell hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">독창적인 정보 콘텐츠 + 실용 도구</p>
+                    <h1>번호만 뽑는 페이지가 아니라, 왜 이 조합을 확인해야 하는지까지 설명합니다.</h1>
+                    <p class="hero-text">
+                        로또 인사이트 랩은 무작위 번호 생성 도구와 함께 확률 이해, 구매 습관 점검,
+                        자주 묻는 질문을 한 번에 제공하는 정보형 사이트입니다. 광고보다 콘텐츠가 먼저 보이도록 설계했고,
+                        처음 방문한 사용자도 원하는 정보를 빠르게 찾을 수 있도록 구조를 단순하게 정리했습니다.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="primary-link" href="#generator">번호 생성 시작</a>
+                        <a class="secondary-link" href="#guide">구매 전 체크리스트 보기</a>
+                    </div>
+                    <ul class="hero-points">
+                        <li>무작위 6개 번호 생성과 색상 구간 표시</li>
+                        <li>초보자를 위한 구매 전 체크리스트 제공</li>
+                        <li>제휴 문의 및 운영 정책 페이지 공개</li>
+                    </ul>
+                </div>
+                <aside class="hero-panel">
+                    <h2>이 사이트가 제공하는 정보</h2>
+                    <dl class="info-list">
+                        <div>
+                            <dt>핵심 도구</dt>
+                            <dd>45개 번호 중 6개를 무작위로 생성</dd>
+                        </div>
+                        <div>
+                            <dt>콘텐츠 원칙</dt>
+                            <dd>중복 문구 대신 실제 구매 판단에 도움이 되는 설명 중심</dd>
+                        </div>
+                        <div>
+                            <dt>업데이트 기준</dt>
+                            <dd>정적 페이지 기준으로 안내 문구와 정책을 계속 보완</dd>
+                        </div>
+                    </dl>
+                </aside>
+            </div>
         </section>
-    </div>
+
+        <section class="section" id="generator">
+            <div class="shell two-column">
+                <article class="card tool-card">
+                    <p class="section-kicker">번호 생성기</p>
+                    <h2>로또 번호 생성기</h2>
+                    <p class="section-intro">
+                        클릭 한 번으로 서로 다른 6개 번호를 생성합니다. 번호는 오름차순으로 정렬되며,
+                        구간별 색상을 통해 한눈에 확인할 수 있습니다.
+                    </p>
+                    <button id="generate-btn" class="primary-button" type="button">번호 생성하기</button>
+                    <div id="lotto-numbers" class="lotto-numbers" aria-live="polite"></div>
+                    <div class="tip-box">
+                        <strong>체크 포인트</strong>
+                        <p>생성된 번호는 참고용입니다. 구매 전 예산과 횟수를 먼저 정하고, 감정적으로 반복 구매하지 않는 것이 중요합니다.</p>
+                    </div>
+                </article>
+                <aside class="card summary-card">
+                    <p class="section-kicker">빠른 가이드</p>
+                    <h2>구매 전에 먼저 확인하세요</h2>
+                    <ul class="check-list">
+                        <li>정해둔 예산 안에서만 구매하기</li>
+                        <li>최근 당첨 번호가 다음 회차를 보장하지 않는다는 점 이해하기</li>
+                        <li>자동 생성과 수동 선택 모두 확률 구조는 같다는 점 기억하기</li>
+                        <li>번호를 기록해 두고 중복 구매를 피하기</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section muted-section" id="guide">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">구매 가이드</p>
+                    <h2>정보를 이해한 뒤 구매해야 만족도가 올라갑니다</h2>
+                    <p>
+                        단순히 숫자를 뽑아주는 것만으로는 충분하지 않습니다. 이 섹션은 초보 사용자가 자주 오해하는 포인트와
+                        구매 전에 점검할 기준을 정리한 콘텐츠 영역입니다.
+                    </p>
+                </div>
+                <div class="grid-three">
+                    <article class="card article-card">
+                        <h3>1. 자동 번호와 수동 번호의 차이</h3>
+                        <p>
+                            많은 사용자가 직접 고른 번호가 더 유리하다고 느끼지만, 기본 확률 구조는 동일합니다.
+                            수동 선택의 장점은 개인 기록과 반복 관리가 쉽다는 점에 가깝습니다.
+                        </p>
+                    </article>
+                    <article class="card article-card">
+                        <h3>2. 최근 당첨 번호를 맹신하지 않기</h3>
+                        <p>
+                            직전 회차의 패턴만 보고 다음 번호를 확신하는 방식은 근거가 약합니다.
+                            이 사이트는 패턴 예언보다 무작위성과 예산 관리라는 현실적인 기준을 더 강조합니다.
+                        </p>
+                    </article>
+                    <article class="card article-card">
+                        <h3>3. 기록이 습관을 만든다</h3>
+                        <p>
+                            어떤 번호를 언제 구매했는지 메모하면 중복 구매를 줄이고, 충동적인 재구매도 통제하기 쉬워집니다.
+                            짧은 메모만으로도 행동 품질이 훨씬 좋아집니다.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="shell content-layout">
+                <article class="card longform-card">
+                    <p class="section-kicker">운영 원칙</p>
+                    <h2>이 사이트를 정보형 콘텐츠로 운영하는 이유</h2>
+                    <p>
+                        로또 관련 사이트는 자극적인 문구나 지나치게 짧은 페이지로 구성되는 경우가 많습니다.
+                        하지만 사용자는 숫자만 필요한 것이 아니라, 어떤 기준으로 구매를 판단해야 하는지에 대한 맥락도 필요합니다.
+                        그래서 이 사이트는 번호 생성 도구 외에 설명 콘텐츠, 문의 채널, 정책 페이지를 함께 제공합니다.
+                    </p>
+                    <p>
+                        운영 방향은 단순합니다. 첫째, 방문자가 페이지를 열자마자 무엇을 할 수 있는지 명확히 보이게 합니다.
+                        둘째, 광고보다 본문 콘텐츠가 먼저 보이도록 유지합니다. 셋째, 구매를 부추기는 표현보다 판단을 돕는 설명을 우선합니다.
+                    </p>
+                </article>
+                <aside class="card notes-card">
+                    <p class="section-kicker">편집 메모</p>
+                    <h2>콘텐츠 개선 기준</h2>
+                    <ul class="note-list">
+                        <li>중복 문구 대신 실제 사용 상황을 설명하는 본문 작성</li>
+                        <li>내부 탐색을 단순화해 원하는 정보까지의 클릭 수 축소</li>
+                        <li>문의 폼, 소개, 개인정보처리방침으로 신뢰 정보 보강</li>
+                        <li>과장된 수익 문구나 오해 소지가 있는 표현 배제</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section muted-section" id="faq">
+            <div class="shell">
+                <div class="section-heading">
+                    <p class="section-kicker">FAQ</p>
+                    <h2>자주 묻는 질문</h2>
+                </div>
+                <div class="faq-list">
+                    <article class="card faq-item">
+                        <h3>이 생성기는 당첨 확률을 높여주나요?</h3>
+                        <p>아닙니다. 이 도구는 번호 선택 과정을 단순화하는 기능을 제공할 뿐이며, 당첨 확률 자체를 높이지는 않습니다.</p>
+                    </article>
+                    <article class="card faq-item">
+                        <h3>수동 번호를 따로 추천해 주나요?</h3>
+                        <p>특정 번호를 예언하는 방식은 제공하지 않습니다. 대신 사용자가 스스로 판단할 수 있도록 설명형 콘텐츠를 함께 제공합니다.</p>
+                    </article>
+                    <article class="card faq-item">
+                        <h3>문의는 어디로 보내면 되나요?</h3>
+                        <p>페이지 하단의 제휴 문의 폼을 통해 브랜드 협업, 광고 제안, 콘텐츠 제휴 문의를 받을 수 있습니다.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="shell two-column contact-layout">
+                <article class="card contact-copy">
+                    <p class="section-kicker">제휴 문의</p>
+                    <h2>브랜드 협업이나 콘텐츠 제휴를 제안해 주세요</h2>
+                    <p>
+                        이 사이트는 실용 정보와 도구를 함께 제공하는 콘텐츠 페이지를 지향합니다.
+                        로또, 데이터 시각화, 소비자 정보, 라이프스타일 카테고리와 관련된 제안을 검토합니다.
+                    </p>
+                    <p>
+                        과장 광고, 허위 정보성 캠페인, 사용자를 오도할 수 있는 제안은 받지 않습니다.
+                    </p>
+                </article>
+                <section class="card partnership-section" aria-labelledby="partnership-title">
+                    <h2 id="partnership-title">문의 폼</h2>
+                    <p class="section-description">응답이 필요한 문의는 이메일 주소와 제안 목적을 함께 남겨 주세요.</p>
+                    <form id="partnership-form" class="partnership-form" action="https://formspree.io/f/mkopjoey" method="POST">
+                        <label class="form-field">
+                            <span>Name</span>
+                            <input type="text" name="name" required>
+                        </label>
+                        <label class="form-field">
+                            <span>Email</span>
+                            <input type="email" name="email" required>
+                        </label>
+                        <label class="form-field">
+                            <span>Company</span>
+                            <input type="text" name="company">
+                        </label>
+                        <label class="form-field">
+                            <span>Message</span>
+                            <textarea name="message" rows="6" required></textarea>
+                        </label>
+                        <button id="partnership-submit" class="submit-button" type="submit">문의 보내기</button>
+                        <p id="form-status" class="form-status" aria-live="polite"></p>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell footer-grid">
+            <div>
+                <strong>로또 인사이트 랩</strong>
+                <p>번호 생성 도구와 설명형 콘텐츠를 함께 제공하는 정보 사이트.</p>
+            </div>
+            <div>
+                <strong>바로가기</strong>
+                <ul>
+                    <li><a href="about.html">소개</a></li>
+                    <li><a href="privacy.html">개인정보처리방침</a></li>
+                    <li><a href="#contact">제휴 문의</a></li>
+                </ul>
+            </div>
+            <div>
+                <strong>운영 메모</strong>
+                <p>마지막 업데이트: <time datetime="2026-03-29">2026-03-29</time></p>
+            </div>
+        </div>
+    </footer>
+
     <script src="main.js" type="module"></script>
 </body>
 </html>
