@@ -6,8 +6,11 @@
     --surface-border: #d8e4ff;
     --text-color: #182033;
     --muted-color: #5b6780;
+    --input-background: #f8fbff;
     --shadow-color: rgba(31, 55, 110, 0.16);
     --ball-size: 50px;
+    --success-color: #0f9d58;
+    --error-color: #d93025;
 }
 
 body.dark-mode {
@@ -18,7 +21,10 @@ body.dark-mode {
     --surface-border: #2d3b55;
     --text-color: #f4f7fb;
     --muted-color: #b7c2d9;
+    --input-background: #101827;
     --shadow-color: rgba(0, 0, 0, 0.35);
+    --success-color: #7ee2a8;
+    --error-color: #ff8b86;
 }
 
 * {
@@ -112,6 +118,100 @@ lotto-ball {
     display: inline-block;
 }
 
+.partnership-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--surface-border);
+    text-align: left;
+}
+
+.partnership-section h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.35rem;
+}
+
+.section-description {
+    margin: 0 0 1.25rem;
+    color: var(--muted-color);
+    line-height: 1.5;
+}
+
+.partnership-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.45rem;
+    font-weight: 600;
+}
+
+.form-field span {
+    font-size: 0.95rem;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    border: 1px solid var(--surface-border);
+    border-radius: 12px;
+    background: var(--input-background);
+    color: var(--text-color);
+    padding: 0.9rem 1rem;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.18);
+}
+
+.submit-button {
+    border: none;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 0.95rem 1.4rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-1px);
+    background: var(--primary-hover);
+}
+
+.submit-button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+}
+
+.form-status {
+    margin: 0;
+    min-height: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.form-status.is-success {
+    color: var(--success-color);
+}
+
+.form-status.is-error {
+    color: var(--error-color);
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 1.5rem;
@@ -122,7 +222,8 @@ lotto-ball {
     }
 
     .theme-toggle,
-    #generate-btn {
+    #generate-btn,
+    .submit-button {
         width: 100%;
     }
 

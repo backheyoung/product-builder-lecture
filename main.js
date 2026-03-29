@@ -66,6 +66,9 @@ const body = document.body;
 const themeToggle = document.getElementById('theme-toggle');
 const generateButton = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const partnershipForm = document.getElementById('partnership-form');
+const partnershipSubmit = document.getElementById('partnership-submit');
+const formStatus = document.getElementById('form-status');
 
 function applyTheme(theme) {
     const isDark = theme === 'dark';
@@ -95,6 +98,15 @@ function generateNumbers() {
     });
 }
 
+function setFormStatus(message, type = '') {
+    formStatus.textContent = message;
+    formStatus.className = 'form-status';
+
+    if (type) {
+        formStatus.classList.add(`is-${type}`);
+    }
+}
+
 themeToggle.addEventListener('click', () => {
     const nextTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
     localStorage.setItem(THEME_KEY, nextTheme);
@@ -102,5 +114,35 @@ themeToggle.addEventListener('click', () => {
 });
 
 generateButton.addEventListener('click', generateNumbers);
+
+partnershipForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    partnershipSubmit.disabled = true;
+    partnershipSubmit.textContent = '전송 중...';
+    setFormStatus('');
+
+    try {
+        const response = await fetch(partnershipForm.action, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: new FormData(partnershipForm),
+        });
+
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+
+        partnershipForm.reset();
+        setFormStatus('문의가 정상적으로 접수되었습니다. 확인 후 연락드리겠습니다.', 'success');
+    } catch (error) {
+        setFormStatus('문의 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'error');
+    } finally {
+        partnershipSubmit.disabled = false;
+        partnershipSubmit.textContent = '문의 보내기';
+    }
+});
 
 initializeTheme();

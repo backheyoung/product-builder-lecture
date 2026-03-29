@@ -14,6 +14,35 @@
         <h1>Lotto Number Generator</h1>
         <button id="generate-btn" type="button">Generate Numbers</button>
         <div id="lotto-numbers" class="lotto-numbers"></div>
+        <section class="partnership-section" aria-labelledby="partnership-title">
+            <h2 id="partnership-title">제휴 문의</h2>
+            <p class="section-description">브랜드 협업이나 광고 제안을 남겨주시면 확인 후 연락드리겠습니다.</p>
+            <form
+                id="partnership-form"
+                class="partnership-form"
+                action="https://formspree.io/f/mkopjoey"
+                method="POST"
+            >
+                <label class="form-field">
+                    <span>Name</span>
+                    <input type="text" name="name" required>
+                </label>
+                <label class="form-field">
+                    <span>Email</span>
+                    <input type="email" name="email" required>
+                </label>
+                <label class="form-field">
+                    <span>Company</span>
+                    <input type="text" name="company">
+                </label>
+                <label class="form-field">
+                    <span>Message</span>
+                    <textarea name="message" rows="5" required></textarea>
+                </label>
+                <button id="partnership-submit" class="submit-button" type="submit">문의 보내기</button>
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+        </section>
     </div>
     <script src="main.js" type="module"></script>
 </body>
